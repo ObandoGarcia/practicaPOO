@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="./assets/estilos.css">
+    <title>Retirar dinero</title>
+</head>
+<body>
+<main class="container">
+    
+    <h2>Retirar dinero en tu cuenta de banco</h2>
+    <div class="grid">
+        <div>
+            <a href="./index.php">
+                <button>Atras</button>
+            </a>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <article data-theme="light">
+            <form method="post"> 
+                <label for="cantidad">
+                    <input type="number" name="cantidad" placeholder="Cantidad de dinero" required>
+                </label>
+                <div class="grid">
+                    <div>
+                        <button type="submit">Retirar</button>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </form>
+        </article>
+        <article data-theme="light">
+            <header>Informacion</header>
+            <?php 
+                require "./clases/Cuenta.php";
+
+                if(isset($_POST['cantidad'])){   
+                    $cuenta = new Cuenta();
+
+                    echo $cuenta->retirar($_POST['cantidad'], $cuenta);
+                }
+
+            ?>
+        </article>
+    </main>
+</body>
+</html>
